@@ -40,21 +40,21 @@ implementation.
 ### As the developer replacing the mock store, I want a documents table matching the existing frontend data model, so that the swap from mock to real data requires minimal UI changes
 
 **Acceptance Criteria:**
-- [ ] `documents` table has a column for every field on the frontend's `DocumentRecord` type (`fileName`, `fileSize`, `uploadedAt`, `status`).
-- [ ] `status` is constrained to `processing`, `completed`, `failed`.
+- [x] `documents` table has a column for every field on the frontend's `DocumentRecord` type (`fileName`, `fileSize`, `uploadedAt`, `status`).
+- [x] `status` is constrained to `processing`, `completed`, `failed`.
 
 ### As the developer replacing the mock store, I want extracted fields stored per document, so that the Document detail page can list and update them
 
 **Acceptance Criteria:**
-- [ ] Each extracted field has a label, a value, and a confidence score between 0 and 1.
-- [ ] A field can be updated (value edited by the user) without affecting other fields on the same document.
-- [ ] Fields are deleted automatically when their parent document is deleted.
+- [x] Each extracted field has a label, a value, and a confidence score between 0 and 1.
+- [x] A field can be updated (value edited by the user) without affecting other fields on the same document.
+- [x] Fields are deleted automatically when their parent document is deleted.
 
 ### As a user uploading a document, I want the actual file stored, so that it can be viewed later from the Document detail page
 
 **Acceptance Criteria:**
-- [ ] Uploaded files are stored in Supabase Storage, not just referenced by name.
-- [ ] The `documents` row stores a path/reference to the file in storage.
+- [x] Uploaded files are stored in Supabase Storage, not just referenced by name.
+- [x] The `documents` row stores a path/reference to the file in storage.
 
 ## Technical Design
 
@@ -121,13 +121,13 @@ Upload / Documents list / Document detail pages will eventually read from and wr
 ## Implementation Plan
 
 ### Phase 1: Schema migration
-- [ ] Add `supabase/migrations/<timestamp>_create_documents_and_fields.sql` creating the
+- [x] Add `supabase/migrations/<timestamp>_create_documents_and_fields.sql` creating the
       `documents` and `extracted_fields` tables with the columns/constraints above.
-- [ ] Add the `documents` storage bucket via migration or `supabase/config.toml`.
+- [x] Add the `documents` storage bucket via migration or `supabase/config.toml`.
 
 ### Phase 2: Documentation
-- [ ] Document each table/column's purpose (this spec + inline SQL comments).
-- [ ] Write ADR-002 capturing the schema decisions (normalized fields table vs. JSON column,
+- [x] Document each table/column's purpose (this spec + inline SQL comments).
+- [x] Write ADR-002 capturing the schema decisions (normalized fields table vs. JSON column,
       UUID vs. text ids, etc.), per issue #6.
 
 ## Testing Strategy
